@@ -116,7 +116,7 @@
                 <span class="typing-effect"></span> <!-- Dynamic typing text -->
             </div>
         </h2>
-        <a href="#about" class="cta-button">Explore My Work</a>
+        <a href="#projects" class="cta-button">Explore My Work</a>
     </section>
 
     <!-- Main Content -->
@@ -141,11 +141,15 @@
                 <div class="skill">DSA</div>
                 <div class="skill">HTML/CSS</div>
                 <div class="skill">JavaScript</div>
-                <div class="skill">React</div>
-                <div class="skill">Node.js</div>
-                <div class="skill">Express.js</div>
+                <div class="skill">React.js</div>
+                <div class="skill">WordPress</div>
+                <div class="skill">WooCommerce</div>
                 <div class="skill">SQL</div>
-                <div class="skill">Mongo.db</div>
+                <!-- <div class="skill">React.js</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">Express.js</div> -->
+                
+                <!-- <div class="skill">Mongo.db</div> -->
             </div>
         </section>
 
@@ -156,7 +160,14 @@
                 <div class="project">
                     <h4>Weather Forecast Web App</h4>
                     <p>Built a responsive web app using HTML, CSS, JavaScript, and a weather API to display real-time weather updates with a clean, user-friendly interface.</p>
-                    <a href="link-to-project-1" target="_blank">View Project</a>
+                    <a href="https://web-weatherapplication.netlify.app/" target="_blank">View Project</a>
+                </div>
+                <div class="project">
+                    <h4>Personal Portfolio</h4>
+                    <p>Designed and deployed a responsive portfolio using HTML, CSS, and
+                        JavaScript, showcasing projects, skills, and a downloadable resume. Hosted on Netlify for
+                        seamless deployment.</p>
+                    <a href="https://karanjaiswal.netlify.app/" target="_blank">View Project</a>
                 </div>
                 <div class="project">
                     <h4>Starbucks Landing Page</h4>
@@ -226,30 +237,48 @@
 
     <!-- JavaScript for Typing Effect -->
     <script>
-        const jobTitles = ["Fullstack Developer", "Competitive Programmer", "Data Analyst", "Java Expert"];
-        const typingElement = document.querySelector(".typing-effect");
-        let index = 0;
+ const jobTitles = [
+  "Fullstack Developer",
+  "Competitive Programmer",
+  "WebPage Designer"
+];
 
-        function typeRoles() {
-            if (index < jobTitles.length) {
-                // Type out the current role
-                typingElement.textContent = jobTitles[index];
-                typingElement.style.animation = "typing 2s steps(40, end) forwards, blink-caret 0.75s step-end infinite";
-                
-                // Wait for the typing animation to finish, then move to the next role
-                setTimeout(() => {
-                    index++;
-                    typeRoles();
-                }, 2000); // 2 seconds per role
-            } else {
-                // After all roles are typed, display them together in steady state
-                typingElement.textContent = jobTitles.join(" | ");
-                typingElement.classList.add("steady-state");
-            }
-        }
+const typingElement = document.querySelector(".typing-effect");
+let index = 0;
+let charIndex = 0;
 
-        // Start the typing effect
-        typeRoles();
+function typeEffect() {
+  const currentTitle = jobTitles[index];
+
+  // Type forward
+  typingElement.textContent = currentTitle.slice(0, charIndex + 1);
+  charIndex++;
+
+  let typingSpeed = 100; // Adjust speed if needed
+
+  if (charIndex === currentTitle.length) {
+    if (index < jobTitles.length - 1) {
+      // Move to the next title after a pause
+      setTimeout(() => {
+        index++;
+        charIndex = 0;
+        typeEffect();
+      }, 1000); // Pause before next title
+    } else {
+      // Once all titles are typed, display them all together
+      setTimeout(() => {
+        typingElement.textContent = jobTitles.join(" | ");
+      }, 1000);
+    }
+  } else {
+    setTimeout(typeEffect, typingSpeed);
+  }
+}
+
+// Start typing effect
+typeEffect();
+
+
         
     </script>
 </body>

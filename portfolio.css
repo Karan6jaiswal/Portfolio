@@ -307,13 +307,12 @@ nav ul li a:hover {
 /* Typing Effect */
 .typing-effect {
     display: inline-block;
-    overflow: hidden;
     white-space: nowrap;
     border-right: 2px solid #00ffff;
-    animation: typing 2s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
-    vertical-align: bottom;
+    animation: typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite;
     font-size: clamp(16px, 3vw, 22px);
-    max-width: 90%;
+    width: auto; /* Allow full width */
+    max-width: none; /* Prevent clipping */
 }
 
 /* Keyframes */
@@ -325,6 +324,7 @@ nav ul li a:hover {
         width: 100%;
     }
 }
+
 
 @keyframes blink-caret {
     from, to {
@@ -470,10 +470,10 @@ main {
     box-sizing: border-box; /* Ensures proper spacing */
 }
 
-.skill:hover {
+/* .skill:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 255, 255, 0.6);
-}
+} */
 
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -574,7 +574,10 @@ main {
     color: #00ffff; /* Neon blue */
     white-space: normal;
 }
-
+.projects div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.6);
+}
 .project p {
     font-size: 16px;
     line-height: 1.6;
@@ -594,6 +597,8 @@ main {
 
 .project a:hover {
     text-decoration: underline;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.6);
 }
 
 
@@ -692,10 +697,10 @@ main {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.education-item:hover {
+/* .education-item:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 255, 255, 0.6);
-}
+} */
 
 .education-item h4 {
     font-size: 22px;
@@ -748,10 +753,10 @@ main {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.achievement-item:hover {
+/* .achievement-item:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 255, 255, 0.6);
-}
+} */
 
 .achievement-item p {
     font-size: 18px;
